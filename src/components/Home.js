@@ -10,10 +10,19 @@ function Home() {
 
 
     useEffect(() => {
-        fetch('https://fakestoreapi.com/products')
-            .then(response => response.json())
-            .then(data => setProducts(data));
-        setIsLoading(false);
+        const fetchProducts = async () => {
+            try {
+                const response = await fetch('https://fakestoreapi.com/products');
+                const data = await response.json();
+                setProducts(data);
+                setIsLoading(false);
+            } catch (error) {
+                console.error(error);
+                setIsLoading(false);
+            }
+        };
+
+        fetchProducts();
     }, []);
 
 
@@ -28,14 +37,19 @@ function Home() {
                 <h1>OnlineStore</h1>
                 <Link to="/search">Go to Search Page</Link>
                 <div className="cart-icon">
-                    <Link to="/cart">
+                    <a href="#cart">
                         {/* <i className="fas fa-heart"></i> */}
                         <span>Items in cart : {cartItems.length}</span>
-                    </Link>
+                    </a>
                 </div>
             </div>
 
-            <div className="row">
+
+            {isLoading ? (
+                <div className="spinner">
+                    <h1>Loading,,,,, Please Wait!!</h1>
+                </div>
+            ) : (<div className="row">
                 {products.map(product => (
                     <div key={product.id} className="col-md-4">
                         <div className="card">
@@ -49,8 +63,14 @@ function Home() {
                         </div>
                     </div>
                 ))}
+                <div id="cart">
+                    <Cart cartItems={cartItems} />
+                </div>
+            </div>)}
 
-            </div>
+
+
+
         </div>
     )
 }
