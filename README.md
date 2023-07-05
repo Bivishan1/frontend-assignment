@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-Run project with `npm start run` command
+In the project directory, you can run:
 
 ### `npm start`
 
@@ -43,7 +43,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/c
 This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
 ### Router
-To manage user router and routes we used `react-router-dom` npm package
+To manage user router and routes we used `react-router-dom` command
 
 
 ### Deployment
